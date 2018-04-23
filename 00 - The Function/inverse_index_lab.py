@@ -1,8 +1,10 @@
 # version code 80e56511a793+
 # Please fill out this stencil and submit using the provided submission script.
-
-
-
+import math
+from random import randint
+import dictutil
+from imp import reload
+reload(dictutil)
 
 
 ## 1: (Task 0.6.2) Movie Review
@@ -12,7 +14,7 @@ def movie_review(name):
     Input: the name of a movie
     Output: a string (one of the review options), selected at random using randint
     """
-    return ...
+    return ["See it!", "A gem!", "Ideological claptrap!"][randint(0, 2)]
 
 
 
