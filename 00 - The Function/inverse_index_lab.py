@@ -33,7 +33,16 @@ def makeInverseIndex(strlist):
     >>> makeInverseIndex(['hello world','hello','hello cat','hellolot of cats']) == {'hello': {0, 1, 2}, 'cat': {2}, 'of': {3}, 'world': {0}, 'cats': {3}, 'hellolot': {3}}
     True
     """
-    pass
+    doc_dict = {}
+    
+    for k, v in enumerate(strlist):
+        for word in v.split():
+            if word in doc_dict:
+                doc_dict[word].add(k)
+            else:
+                doc_dict[word] = { k }
+        
+    return doc_dict
 
 
 
@@ -54,7 +63,14 @@ def orSearch(inverseIndex, query):
     >>> idx == makeInverseIndex(['Johann Sebastian Bach', 'Johannes Brahms', 'Johann Strauss the Younger', 'Johann Strauss the Elder', ' Johann Christian Bach',  'Carl Philipp Emanuel Bach'])
     True
     """
-    pass
+    
+    idx_values = set()
+    
+    for searchword in query:
+        if searchword in inverseIndex:
+            idx_values.update(inverseIndex[searchword])
+            
+    return idx_values
 
 
 
@@ -75,5 +91,21 @@ def andSearch(inverseIndex, query):
     >>> idx == makeInverseIndex(['Johann Sebastian Bach', 'Johannes Brahms', 'Johann Strauss the Younger', 'Johann Strauss the Elder', ' Johann Christian Bach',  'Carl Philipp Emanuel Bach'])
     True
     """
-    pass
+    idx_values = set()
+    
+    count = 0
+    
+    for searchword in query:
+        if count == 0 and searchword in inverseIndex:
+            idx_values = inverseIndex[searchword]
+            
+        elif searchword in inverseIndex:
+            idx_values = idx_values & inverseIndex[searchword]
+        
+        else:
+            idx_values = set()
+        
+        count += 1
+        
+    return idx_values
 
