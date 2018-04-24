@@ -21,9 +21,12 @@ def tuple_sum(A, B):
     >>> tuple_sum([(0,1),(-1,0),(2,2)], [(3,4),(5,6),(7,8)])
     [(3, 5), (4, 6), (9, 10)]
     '''
-    pass
+    return_tuple = []
 
+    for ind in range(len(A)):
+        return_tuple.append(tuple(map(sum, list(zip(A[ind], B[ind])))))
 
+    return return_tuple
 
 ## 2: (Problem 0.8.4) Inverse Dictionary
 def inv_dict(d):
@@ -36,7 +39,7 @@ def inv_dict(d):
     Example:
     >>> inv_dict({'goodbye':  'au revoir', 'thank you': 'merci'}) == {'merci':'thank you', 'au revoir':'goodbye'}
     '''
-    pass
+    return { v:k for k, v in d.items() }
 
 
 
@@ -52,21 +55,55 @@ def row(p, n):
     >>> row(10,4)
     [10, 11, 12, 13]
     '''
-    pass
+    return [p + i for i in range(n)]
 
-comprehension_with_row = ...
+comprehension_with_row = [row(p, 20) for p in range(15)]
 
-comprehension_without_row = ...
+comprehension_without_row = [[p + i for i in range(20)] for p in range(15)]
 
 
 
 ## 4: (Problem 0.8.10) Probability Exercise 1
-Pr_f_is_even = ...
-Pr_f_is_odd  = ...
+
+def is_even_func(x, condition):
+    if x % 2 == condition:
+        return True
+    
+    return False
+
+def prob1(condition):    
+    domain = { 1, 2, 3, 5, 6 }
+    codomain = { 2, 3, 4, 6, 7 }
+    probabilities = [ 0.5, 0.2, 0.1, 0.1, 0.1 ]
+    
+    probs = [z for x, y, z in zip(domain, codomain, probabilities) if is_even_func(y, condition) ]
+    
+    return sum(probs)
+    
+Pr_f_is_even = prob1(0)
+Pr_f_is_odd  = prob1(1)
 
 
 
 ## 5: (Problem 0.8.11) Probability Exercise 2
-Pr_g_is_1    = ...
-Pr_g_is_0or2 = ...
+
+def outputs_one(val):
+    return val == 1
+
+def outputs_zero_or_two(val):
+    return val == 0 or val == 2
+
+def prob2(method):
+    domain = { 1, 2, 3, 4, 5, 6, 7 }
+    codomain = { 0, 1, 2 }
+    probabilities = [ 0.2, 0.2, 0.2, 0.1, 0.1, 0.1, 0.1 ]
+
+    codomain = [ x % 3 for x in domain ]
+    
+    probs = [z for x, y, z in zip(domain, codomain, probabilities) if method(y) ]
+
+    return sum(probs)
+
+Pr_g_is_1    = prob2(outputs_one)
+Pr_g_is_0or2 = prob2(outputs_zero_or_two)
 
