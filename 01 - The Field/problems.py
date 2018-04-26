@@ -72,8 +72,30 @@ def one_time_pad(binary):
     
     for val in range(32):
         binary_key, _ = integer_to_binary(val)
+        binary_key = binary_key.zfill(5)
         
-        print(val, binary_key.zfill(5))
+        pad_item = ["", ""]
+
+        for i in range(len(binary)):
+            bin_val = int(binary[i])
+            bin_key = int(binary_key[i])
+            
+            if bin_val == 1 and bin_key == 1:
+                pad_item[0] += "1"
+            else:
+                pad_item[0] += "0"
+                
+            if bin_val != bin_key:
+                pad_item[1] += "1"
+            else:
+                pad_item[1] += "0"
+                
+        pad.append(pad_item)
+            
+    print(pad)
+    
+    return pad
+        
 #        for i in binary:
 #            num = int(i)
 #            
