@@ -139,25 +139,45 @@ def crack():
         for combo in potential_combos:
             for alg in combo:
 #                print("count", count)
-                answers[count] = alg
+                t = binary_to_integer(alg)
+                
+                my_char = ""
+                
+                if t == 26:
+                    my_char = " "
+                else:
+                    my_char = chr(t + 65)
+                    
+                answers[count] = my_char
+                
                 count += 1
                 
 #        print(potential_combos)
         
-        t = binary_to_integer(arr)
 
         all_answers.append(answers)        
 #        print(t, t + 65, chr(t + 65))
         
     all_answers = list(zip(*all_answers))
-    print(all_answers)
-    print(len(all_answers))
+    
+    ans_final = []
+    
+    for ans in all_answers:
+        text_answer = ""
+        
+        for character in ans:
+            text_answer += character
+            
+        ans_final.append(text_answer)
+#    print(all_answers)
+#    print(len(all_answers))
     
     
-    return all_answers
+    return ans_final
 
 
 my_ans = crack()
+print(my_ans)
 #one_time_pad("10111")
 #binary, _ = integer_to_binary(23)
 #print(binary)
