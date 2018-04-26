@@ -96,23 +96,6 @@ def one_time_pad(binary):
     
     return pad
         
-#        for i in binary:
-#            num = int(i)
-#            
-#            for r in range(2):
-#                if r == 1 and num == 1:
-#                    pad[r] += "1"
-#                else:
-#                    pad[r] += "0"
-#                    
-#            for r in range(2):
-#                if r != num:
-#                    pad[r + 2] += "1"
-#                else:
-#                    pad[r + 2] += "0"
-#    print(pad)
-#    return pad
-
 def integer_to_binary(integer, exp = 0):
     binary = ""    
     
@@ -121,24 +104,18 @@ def integer_to_binary(integer, exp = 0):
         
     calc_exp = 2 ** exp
     val = integer // calc_exp
-#    print(val)
-#    print(integer, calc_exp, val)
     
     if val > 0:
         integer = integer - calc_exp
         binary = binary + "1"        
     else:
         binary = binary + "0"
-    
-#    print(binary)
 
     return binary, integer
     
 def binary_to_integer(binary):
     total = 0
-    
-    binary = one_time_pad(binary)[0]
-    
+
     for i in range(len(binary)):
         bit = binary[len(binary) - i - 1]
         total += int(bit) * (2 ** i)
@@ -153,8 +130,8 @@ def crack():
         
         print(t, t + 65, chr(t + 65))
         
-#crack()
-one_time_pad("10111")
+crack()
+#one_time_pad("10111")
 #binary, _ = integer_to_binary(23)
 #print(binary)
 
