@@ -78,7 +78,11 @@ Be sure your procedure works for the empty list.
       >>> mySum([3,5,10])
       18
     '''
-    pass
+    current = 0
+    for x in L:
+        current = current + x
+        
+    return current
 
 
 
@@ -96,7 +100,11 @@ Be sure your procedure works for the empty list.
       >>> myProduct([-3,2,4])
       -24
     '''
-    pass
+    current = 1
+    for x in L:
+        current = current * x
+        
+    return current
 
 
 
@@ -115,7 +123,11 @@ Hint: The value of the Python expression float('infinity') is infinity.
     >>> myMin([0,3,5,-2,-5])
     -5
     '''
-    pass
+    current = float('infinity')
+    for x in L:
+        current = current if current < x else x
+        
+    return current
 
 
 
@@ -133,7 +145,11 @@ Be sure your procedure works for the empty list.
     >>> myConcat(['what','is','up'])
     'whatisup'
     '''
-    pass
+    current = ...
+    for x in L:
+        current = ...
+        
+    return current
 
 
 
@@ -151,7 +167,11 @@ Be sure your procedure works for the empty list.
     >>> myUnion([set(),{3,5},{3,5}])
     {3, 5}
     '''
-    pass
+    current = ...
+    for x in L:
+        current = ...
+        
+    return current
 
 
 
