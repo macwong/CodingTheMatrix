@@ -19,8 +19,7 @@ def myFilter(L, num):
       >>> myFilter([10,15,20,25],10)
       [15, 25]
     '''
-    pass
-
+    return [ x for x in L if x % num != 0 ]
 
 
 ## 2: (Problem 1.7.2) Python Comprehensions: Lists of Lists
