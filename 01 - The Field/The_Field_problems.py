@@ -31,7 +31,7 @@ def my_lists(L):
     >>> my_lists([0,3])
     [[], [1, 2, 3]]
     '''
-    pass
+    return [ list(range(1, x + 1)) for x in L ]
 
 
 
@@ -54,9 +54,15 @@ def myFunctionComposition(f, g):
       >>> myFunctionComposition(a,b) == {'x':'twentyfour','y':'twentyfive'}
       True
     '''
-    pass
+    return { a:g[f[a]] for a in f }
 
-
+#f = {0:'a',1:'b'}
+#g = {'a':'apple','b':'banana'}
+#print(myFunctionComposition(f,g))
+#
+#a = {'x':24,'y':25}
+#b = {24:'twentyfour',25:'twentyfive'}
+#print(myFunctionComposition(a,b) == {'x':'twentyfour','y':'twentyfive'})
 
 ## 4: (Problem 1.7.4) Summing numbers in a list
 def mySum(L):
