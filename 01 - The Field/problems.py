@@ -125,20 +125,15 @@ def binary_to_integer(binary):
 def crack():
     code = [ "10101", "00100", "10101", "01011", "11001", "00011", "01011", "10101", "00100", "11001", "11010" ]
     
-    all_answers = []
+    all_answers = [""] * 64
     
     for arr in code:
-        answers = [""] * 64
         potential_combos = one_time_pad(arr)
-        
-#        print(len(potential_combos))
-#        print(len(potential_combos[0]))
 
         count = 0
         
         for combo in potential_combos:
             for alg in combo:
-#                print("count", count)
                 t = binary_to_integer(alg)
                 
                 my_char = ""
@@ -147,41 +142,17 @@ def crack():
                     my_char = " "
                 else:
                     my_char = chr(t + 65)
-                    
-                answers[count] = my_char
+                
+                all_answers[count] += my_char
                 
                 count += 1
                 
-#        print(potential_combos)
-        
-
-        all_answers.append(answers)        
-#        print(t, t + 65, chr(t + 65))
-        
-    all_answers = list(zip(*all_answers))
     
-    ans_final = []
-    
-    for ans in all_answers:
-        text_answer = ""
-        
-        for character in ans:
-            text_answer += character
-            
-        ans_final.append(text_answer)
-#    print(all_answers)
-#    print(len(all_answers))
-    
-    
-    return ans_final
+    return all_answers
 
 
 my_ans = crack()
 print(my_ans)
-#one_time_pad("10111")
-#binary, _ = integer_to_binary(23)
-#print(binary)
-
 
 
 
