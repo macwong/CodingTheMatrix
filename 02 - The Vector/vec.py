@@ -15,7 +15,7 @@ def getitem(v,k):
     0
     """
     assert k in v.D
-    pass
+    return v.f[k] if k in v.f else 0
 
 def setitem(v,k,val):
     """
@@ -35,7 +35,7 @@ def setitem(v,k,val):
     0
     """
     assert k in v.D
-    pass
+    v.f[k] = val
 
 def equal(u,v):
     """
