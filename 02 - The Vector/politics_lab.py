@@ -38,7 +38,11 @@ def create_voting_dict(strlist):
     The lists for each senator should preserve the order listed in voting data.
     In case you're feeling clever, this can be done in one line.
     """
-    pass
+    for vote in strlist:
+        vote = vote[0:len(vote) - 1]
+        split_vote = vote.split(' ')
+        
+        print({ split_vote[0]:[int(x) for x in split_vote[3:len(split_vote)]]})
 
 
 
