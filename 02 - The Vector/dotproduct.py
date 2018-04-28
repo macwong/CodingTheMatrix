@@ -18,4 +18,3 @@ def dot_product_list(needle, haystack):
 print(dot_product_list(b, a))
 
 
-
