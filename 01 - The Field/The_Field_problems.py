@@ -169,7 +169,6 @@ Be sure your procedure works for the empty list.
     '''
     current = set()
     for x in L:
-        print(current, x)
         current = current | x
         
     return current
