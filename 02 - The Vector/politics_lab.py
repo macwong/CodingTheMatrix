@@ -91,22 +91,17 @@ def most_similar(sen, voting_dict):
 
     Note that you can (and are encouraged to) re-use your policy_compare procedure.
     """
-#    sen_votes = voting_dict[sen]
-    
     best_diff = -float('infinity')
     best_name = ""
     
     for key, _ in voting_dict.items():
         if sen != key:
-#            print(sen, key)
             diff = policy_compare(sen, key, voting_dict)
             if diff > best_diff:
                 best_diff = diff
                 best_name = key
                 
     return best_name
-
-#    return ""
 
 
 
@@ -127,7 +122,17 @@ def least_similar(sen, voting_dict):
         >>> least_similar('c', vd)
         'b'
     """
-    pass
+    least_diff = float('infinity')
+    least_name = ""
+    
+    for key, _ in voting_dict.items():
+        if sen != key:
+            diff = policy_compare(sen, key, voting_dict)
+            if diff < least_diff:
+                least_diff = diff
+                least_name = key
+                
+    return least_name
 
 
 
