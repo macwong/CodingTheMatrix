@@ -110,7 +110,7 @@ def add(u,v):
     True
     """
     assert u.D == v.D
-    pass
+    return Vec(u.D, { d:getitem(u, d) + getitem(v, d) for d in u.D & v.D })
 
 def dot(u,v):
     """
@@ -144,7 +144,7 @@ def dot(u,v):
     12
     """
     assert u.D == v.D
-    pass
+    return sum([getitem(u, d) * getitem(v, d) for d in v.D])
 
 def scalar_mul(v, alpha):
     """
@@ -164,7 +164,7 @@ def scalar_mul(v, alpha):
     >>> u == Vec({'x','y','z','w'},{'x':1,'y':2,'z':3,'w':4})
     True
     """
-    return Vec(v.D, { d:v.f[d] * alpha if d in v.f else 0 for d in v.D })
+    return Vec(v.D, { d:alpha * value for d, value in v.f.items() })
 
 def neg(v):
     """
@@ -181,7 +181,7 @@ def neg(v):
     >>> -Vec({'a','b','c'}, {'a':1}) == Vec({'a','b','c'}, {'a':-1})
     True
     """
-    pass
+    return scalar_mul(v, -1)
 
 ###############################################################################################################################
 
