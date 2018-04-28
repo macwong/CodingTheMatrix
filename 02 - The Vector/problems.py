@@ -110,15 +110,6 @@ calc_watts('CPU', dur0, dur1, dur2, dur3, rate0, rate1, rate2, rate3)
 
 
 
-a = [1,-1,1,1,1,-1,1,1,1]
-b = [1,-1,1,1,-1,1]
-
-import numpy as np
-print(np.dot(a[0:6],b))
-#a * b
-
-
-
 
 
 
