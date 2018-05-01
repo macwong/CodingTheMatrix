@@ -137,8 +137,8 @@ def least_similar(sen, voting_dict):
 
 
 ## 5: (Task 2.12.5) Chafee, Santorum
-most_like_chafee    = ''
-least_like_santorum = '' 
+most_like_chafee    = 'Jeffords'
+least_like_santorum = 'Feingold' 
 
 
 
@@ -157,10 +157,34 @@ def find_average_similarity(sen, sen_set, voting_dict):
         >>> vd == {'Klein':[1,1,1], 'Fox-Epstein':[1,-1,0], 'Ravella':[-1,0,0], 'Oyakawa':[-1,-1,-1], 'Loery':[0,1,1]}
         True
     """
-    return ...
+    return sum([ policy_compare(sen, x, voting_dict) for x in sen_set ]) / len(sen_set)
 
-most_average_Democrat = ... # give the last name (or code that computes the last name)
+most_average_Democrat = 'Lieberman' # give the last name (or code that computes the last name)
 
+#def blah(strlist):
+#    final_set = {}
+#    
+#    for vote in strlist:
+#        vote = vote[0:len(vote) - 1]
+#        split_vote = vote.split(' ')
+#        
+#        if split_vote[1] == 'D':
+#            final_set[split_vote[0]] = [int(x) for x in split_vote[3:len(split_vote)]]
+#
+#    return final_set
+
+#def most_avg(all_sen_set, democrat_set, voting_dict):
+#    avg_amount = float('infinity')
+#    avg_senator = ""
+#    
+#    for sen in all_sen_set:
+#        amount = find_average_similarity(sen, democrat_set, voting_dict)
+#        
+#        if abs(amount) < avg_amount:
+#            avg_amount = abs(amount)
+#            avg_senator = sen
+#            
+#    return sen
 
 
 ## 7: (Task 2.12.8) Average Record
@@ -186,9 +210,21 @@ def find_average_record(sen_set, voting_dict):
         >>> find_average_record({'a'}, d)
         [0.0, 1.0, 1.0]
     """
-    return ...
+    avg = [0, 0, 0]
+    
+    for record in sen_set:
+        for val in range(len(avg)):    
+            avg[val] += voting_dict[record][val]
+            
+    for val in range(len(avg)):    
+        avg[val] = avg[val] / len(sen_set)
+    
+        
+    print(avg)
+    return avg
+#    return [ x for x in voting_dict.items() if x[0] in sen_set ]
 
-average_Democrat_record = ... # give the vector as a list
+average_Democrat_record = [-0.16279069767441862, -0.23255813953488372, 1.0] # give the vector as a list
 
 
 
